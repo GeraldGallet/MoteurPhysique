@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 
+class Object;
+
 using namespace std;
 
 class Force{

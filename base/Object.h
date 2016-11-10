@@ -6,6 +6,8 @@
 
 using namespace std;
 
+class Force;
+
 class Object{
 private:
 	vector<double> position;
