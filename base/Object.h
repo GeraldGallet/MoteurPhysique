@@ -13,11 +13,17 @@ private:
 	double mass;
 	double charge;
 
+	int index;
+
 public:
+	Object(){};
+	Object(Force* force);
+
 	vector<double> getPosition(){return position;};
 	vector<double> getSpeed(){return speed;};
 	double getMass(){return mass;};
 	double getCharge(){return charge;};
+	
 	void setPosition(vector<double> newPosition){position = newPosition};
 	void setSpeed(vector<double> newSpeed){speed = newSpeed};
 	void setMass(double newMass){mass = newMass};
