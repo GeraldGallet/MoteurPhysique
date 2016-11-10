@@ -14,6 +14,13 @@ private:
 	double charge;
 
 public:
-
+	vector<double> getPosition(){return position;};
+	vector<double> getSpeed(){return speed;};
+	double getMass(){return mass;};
+	double getCharge(){return charge;};
+	void setPosition(vector<double>);
+	void setSpeed(vector<double>);
+	void setMass(double);
+	void setCharge(double);
 };
 #endif
