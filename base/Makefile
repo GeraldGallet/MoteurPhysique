@@ -24,10 +24,12 @@ endif
 
 #debut de la zone propre au projet
 
-$(EXEC): main.o base.o
+$(EXEC): main.o Object.o Force.o
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
-base.o : base.h
+Object.o : Object.h
+
+Force.o : Force.h
 
 %.o: %.cpp
 	$(CXX) -o $@ -c $< $(CXXFLAGS)
