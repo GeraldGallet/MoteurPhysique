@@ -7,13 +7,13 @@
 using namespace std;
 
 class Force{
-private:	
-	vector<double> gravity();
-	vector<double> electrostatic();
-	vector<double> drag();
+private:
+	vector<double> gravity(Object* object);
+	vector<double> electrostatic(Object* object);
+	vector<double> drag(Object* object);
 
 public:
-	vector<double> applyForces();
+	vector<double> applyForces(Object* object);
 
 };
 

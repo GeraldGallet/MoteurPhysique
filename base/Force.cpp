@@ -8,7 +8,7 @@ using namespace std;
   \param Rien pour le moment
   \return Rien pour le moment
 */
-vector<double> Force::gravity() {
+vector<double> Force::gravity(Object* object) {
 
 }
 
@@ -18,7 +18,7 @@ vector<double> Force::gravity() {
   \param Rien pour le moment
   \return Rien pour le moment
 */
-vector<double> Force::electrostatic() {
+vector<double> Force::electrostatic(Object* object) {
 
 }
 
@@ -28,7 +28,7 @@ vector<double> Force::electrostatic() {
   \param Rien pour le moment
   \return Rien pour le moment
 */
-vector<double> Force::drag() {
+vector<double> Force::drag(Object* object) {
 
 }
 
@@ -38,6 +38,6 @@ vector<double> Force::drag() {
   \param Rien pour le moment
   \return Rien pour le moment
 */
-vector<double> Force::applyForces() {
+vector<double> Force::applyForces(Object* object) {
 
 }
