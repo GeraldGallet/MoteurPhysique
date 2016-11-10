@@ -23,10 +23,10 @@ public:
 	vector<double> getSpeed(){return speed;};
 	double getMass(){return mass;};
 	double getCharge(){return charge;};
-	
-	void setPosition(vector<double> newPosition){position = newPosition};
-	void setSpeed(vector<double> newSpeed){speed = newSpeed};
-	void setMass(double newMass){mass = newMass};
-	void setCharge(double newCharge){charge = newCharge};
+
+	void setPosition(vector<double> newPosition){position = newPosition;};
+	void setSpeed(vector<double> newSpeed){speed = newSpeed;};
+	void setMass(double newMass){mass = newMass;};
+	void setCharge(double newCharge){charge = newCharge;};
 };
 #endif
