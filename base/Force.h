@@ -7,7 +7,7 @@
 using namespace std;
 
 class Force{
-private:
+private:	
 	vector<double> gravity();
 	vector<double> electrostatic();
 	vector<double> drag();
