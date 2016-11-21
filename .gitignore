@@ -2,3 +2,4 @@ bin/lib/*.a
 lib/src/*.o
 lib/test/*/*.o
 lib/test/*/*
+!lib/test/*/Makefile
