@@ -9,9 +9,7 @@ int main(){
 	Object plouf;
 	Force plaf;
 	PhysicEngine myEngine;
-	//myEngine.run();
 	std::thread engineRun(&PhysicEngine::run,&myEngine);
-	//engineRun.join();
 	while (true) {
 		std::cout << "I can do some other stuff" << '\n';
 	}

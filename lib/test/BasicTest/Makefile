@@ -7,14 +7,14 @@ OBJ= $(SRC:.cpp=.o)
 
 all : $(EXEC)
 
-basictest: main.o
+basictest: $(OBJ)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
 %.o : %.cpp
 	$(CXX) -c $< -o $@ $(CXXFLAGS)
 
 clean:
-	rm -f basictest main.o
+	rm -f $(EXEC) *.o
 
 run:
 	./$(EXEC)
