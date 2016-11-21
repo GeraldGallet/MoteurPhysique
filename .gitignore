@@ -1,3 +1,4 @@
 bin/lib/*.a
 lib/src/*.o
 lib/test/*/*.o
+lib/test/*/*
