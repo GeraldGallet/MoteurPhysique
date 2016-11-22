@@ -3,7 +3,7 @@ SRC_PATH = ./lib/src
 TEST_PATH = ./lib/test
 CXX = g++
 CXXFLAGS = -std=c++11 -W -Wall -v
-SRC= $(SRC_PATH)/Force.cpp $(SRC_PATH)/Object.cpp $(SRC_PATH)/PhysicEngine.cpp
+SRC= $(SRC_PATH)/PhysicEngine.cpp $(SRC_PATH)/Object.cpp $(SRC_PATH)/Sphere.cpp $(SRC_PATH)/Vector3.cpp
 TEST= $(TEST_PATH)/BasicTest/
 OBJ= $(SRC:.cpp=.o)
 
