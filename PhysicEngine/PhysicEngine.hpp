@@ -15,6 +15,7 @@
 #include <ctime>
 
 #include "PhysicEngine/Object.hpp"
+#include "PhysicEngine/Vector3.hpp"
 
 class PhysicEngine {
 private:
@@ -27,6 +28,7 @@ public:
   ~PhysicEngine();
 
   void run();
+  Object* getObject(unsigned int index);
   void addObject(Object* object);
   void removeObject(const Object& object);
   std::string getObjectsAsJSON();

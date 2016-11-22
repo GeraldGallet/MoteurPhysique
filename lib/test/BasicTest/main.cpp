@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <thread>
+
 #include "PhysicEngine/PhysicEngine.hpp"
 #include "PhysicEngine/Object.hpp"
 #include "PhysicEngine/Sphere.hpp"
@@ -11,10 +13,10 @@ int main(){
 	Object myObject;
 	Sphere mySphere;
 	myEngine.addObject(new Sphere());
-	myEngine.addObject(new Sphere("TEST1"));
-	myEngine.addObject(new Sphere("TEST2"));
-	std::cout << myEngine.getObjectsAsJSON() << '\n';
-	std::cout << mySphere.getCenter().x << " " << mySphere.getCenter().y  << '\n';
-	myEngine.run();
+	myEngine.getObject(0)->setVelocity(1,1,1);
+	std::thread engineRun(&PhysicEngine::run,&myEngine);
+	while (true) {
+		std::cout << myEngine.getObjectsAsJSON() << '\n';
+	}
 	return 0;
 }
