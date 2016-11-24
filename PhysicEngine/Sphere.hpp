@@ -1,8 +1,8 @@
 //
-//  Sphere.hpp
-//  Projects
+//	Sphere.hpp
+//	Projects
 //
-//  Created by <author> on 22/11/2016.
+//	Created by <author> on 22/11/2016.
 //
 //
 
@@ -14,24 +14,24 @@
 
 class Sphere : public Object{
 private:
-  float mRadius;
+	float mRadius;
 public:
-  Sphere();
-  Sphere(std::string name);
-  Sphere(float radius);
-  Sphere(std::string name, float radius);
-  ~Sphere();
+	Sphere();
+	Sphere(std::string name);
+	Sphere(float radius);
+	Sphere(std::string name, float radius);
+	~Sphere();
 
-  float getRadius();
-  void setRadius(float radius);
+	float getRadius();
+	void setRadius(float radius);
 protected:
 
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Sphere& sphere)
 {
-    os << "Name : " << sphere.getName() << " Type : Object/Sphere";
-    return os;
+	os << "Name : " << sphere.getName() << " Type : Object/Sphere";
+	return os;
 }
 
 #endif /* Sphere_hpp */

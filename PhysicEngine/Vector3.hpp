@@ -1,8 +1,8 @@
 //
-//  Vector3.hpp
-//  Projects
+//	Vector3.hpp
+//	Projects
 //
-//  Created by <author> on 22/11/2016.
+//	Created by <author> on 22/11/2016.
 //
 //
 
