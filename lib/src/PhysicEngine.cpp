@@ -41,7 +41,6 @@ std::string PhysicEngine::getObjectsAsJSON() {
 
 		Vector3<float> position = mObjects[i]->getCenter();
 
-<<<<<<< HEAD
     r += "{";
     r += "\"name\":\""+mObjects[i]->getName()+"\",";
     r += "\"position\":["+std::to_string(position.x)+","+std::to_string(position.y)+","+std::to_string(position.z)+"]";
