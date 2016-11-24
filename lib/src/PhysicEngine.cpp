@@ -43,7 +43,7 @@ std::string PhysicEngine::getObjectsAsJSON() {
 
     r += "{";
     r += "\"name\":\""+mObjects[i]->getName()+"\",";
-    r += "\"position\":["+std::to_string(position.x)+","+std::to_string(position.y)+","+std::to_string(position.z)+"]}]";
+    r += "\"position\":["+std::to_string(position.x)+","+std::to_string(position.y)+","+std::to_string(position.z)+"]";
     r += "}";
     if (i != mObjects.size()-1) r+= ",";
 
