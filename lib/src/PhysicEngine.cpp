@@ -52,8 +52,13 @@ std::string PhysicEngine::getObjectsAsJSON() {
 	return r;
 }
 
-void PhysicEngine::simulate(float dt) {
+Vector3<float> GetForces( Object *);
 
+void PhysicEngine::simulate(float dt) {
+	std::vector<Vector3<float>> acceleration;
+	for (unsigned int i = 0; i < mObjects.size(); i++) {
+		acceleration[i] = GetForces(mObjects[i]);
+	}
 
 
 	for (unsigned int i = 0; i < mObjects.size(); i++) {
