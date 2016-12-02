@@ -32,6 +32,7 @@ public:
 	void addObject(Object* object);
 	void removeObject(const Object& object);
 	std::string getObjectsAsJSON();
+	Vector3<float> GetForces( Object *);
 protected:
 
 };

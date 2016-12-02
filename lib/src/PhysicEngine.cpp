@@ -6,7 +6,7 @@
 //
 //
 
-#include "PhysicEngine/PhysicEngine.hpp"
+#include "../../PhysicEngine/PhysicEngine.hpp"
 
 	PhysicEngine::PhysicEngine(): mObjects()	{}
 PhysicEngine::~PhysicEngine() {}
@@ -30,9 +30,7 @@ void PhysicEngine::addObject(Object* object) {
 	mObjects.push_back(object);
 	return;
 }
-void PhysicEngine::removeObject(const Object& object) {
-	//
-}
+
 
 std::string PhysicEngine::getObjectsAsJSON() {
 	std::string r;
@@ -51,16 +49,39 @@ std::string PhysicEngine::getObjectsAsJSON() {
 	return r;
 }
 
-Vector3<float> GetForces( Object *);
 
 void PhysicEngine::simulate(float dt) {
-	std::vector<Vector3<float>> acceleration;
-	for (unsigned int i = 0; i < mObjects.size(); i++) {
-		acceleration[i] = GetForces(mObjects[i]);
-	}
 
+	Vector3<float> k1, k2, k3, k4, centerBase;
 
 	for (unsigned int i = 0; i < mObjects.size(); i++) {
-		mObjects[i]->setCenter(mObjects[i]->getCenter() + (mObjects[i]->getVelocity() * (dt)));
+		centerBase = mObjects[i]->getCenter();
+
+		k1 = mObjects[i]->getVelocity() * dt;
+
+		mObjects[i]->setCenter(centerBase + k1/ (float) 2);
+		k2 = ( mObjects[i]->getVelocity() + ( ( (GetForces(mObjects[i]) * (dt/2) ) ) / mObjects[i]->getWeight() ) ) * dt;
+
+		mObjects[i]->setCenter(centerBase + k2/ (float) 2);
+		k3 = ( mObjects[i]->getVelocity() + ( ( (GetForces(mObjects[i]) * (dt/2) ) ) / mObjects[i]->getWeight() ) ) * dt;
+
+		mObjects[i]->setCenter(centerBase + k3);
+		k4 = ( mObjects[i]->getVelocity() + ( ( (GetForces(mObjects[i]) *   dt   ) ) / mObjects[i]->getWeight() ) ) * dt;
+
+		mObjects[i]->setCenter(centerBase);
+		mObjects[i]->setCenter(mObjects[i]->getCenter() + k1/ (float) 6 + k2/ (float) 3 + k3/ (float) 3 + k4/ (float) 6);
 	}
+}
+
+
+
+/* TODO */
+
+void PhysicEngine::removeObject(const Object& object) {
+	object.getWeight();
+}
+
+Vector3<float> PhysicEngine::GetForces( Object *){
+	Vector3<float> forces;
+	return forces;
 }
