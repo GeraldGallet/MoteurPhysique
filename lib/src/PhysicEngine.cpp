@@ -60,28 +60,38 @@ void PhysicEngine::simulate(float dt) {
 		k1 = mObjects[i]->getVelocity() * dt;
 
 		mObjects[i]->setCenter(centerBase + k1/ (float) 2);
-		k2 = ( mObjects[i]->getVelocity() + ( ( (GetForces(mObjects[i]) * (dt/2) ) ) / mObjects[i]->getWeight() ) ) * dt;
+		k2 = ( mObjects[i]->getVelocity() + ( ( (GetForces(*mObjects[i]) * (dt/2) ) ) / mObjects[i]->getWeight() ) ) * dt;
 
 		mObjects[i]->setCenter(centerBase + k2/ (float) 2);
-		k3 = ( mObjects[i]->getVelocity() + ( ( (GetForces(mObjects[i]) * (dt/2) ) ) / mObjects[i]->getWeight() ) ) * dt;
+		k3 = ( mObjects[i]->getVelocity() + ( ( (GetForces(*mObjects[i]) * (dt/2) ) ) / mObjects[i]->getWeight() ) ) * dt;
 
 		mObjects[i]->setCenter(centerBase + k3);
-		k4 = ( mObjects[i]->getVelocity() + ( ( (GetForces(mObjects[i]) *   dt   ) ) / mObjects[i]->getWeight() ) ) * dt;
+		k4 = ( mObjects[i]->getVelocity() + ( ( (GetForces(*mObjects[i]) *   dt   ) ) / mObjects[i]->getWeight() ) ) * dt;
 
 		mObjects[i]->setCenter(centerBase);
 		mObjects[i]->setCenter(mObjects[i]->getCenter() + k1/ (float) 6 + k2/ (float) 3 + k3/ (float) 3 + k4/ (float) 6);
 	}
 }
 
-
+void PhysicEngine::removeObject(const Object& object) {
+	for (unsigned int i = 0; i < mObjects.size(); i++) {
+		if(
+			mObjects[i]->getName() == object.getName() &&
+			mObjects[i]->getWeight() == object.getWeight() &&
+			mObjects[i]->getCenter() == object.getCenter() &&
+			mObjects[i]->getVelocity() == object.getVelocity()
+		){
+			mObjects.erase(mObjects.begin() + i);
+			return;
+		}
+	}
+}
 
 /* TODO */
 
-void PhysicEngine::removeObject(const Object& object) {
-	object.getWeight();
-}
 
-Vector3<float> PhysicEngine::GetForces( Object *){
-	Vector3<float> forces;
+
+Vector3<float> PhysicEngine::GetForces(Object &object){
+	Vector3<float> forces = gravity(object);
 	return forces;
 }
