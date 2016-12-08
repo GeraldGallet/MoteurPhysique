@@ -1,0 +1,24 @@
+body {
+	background-color: black;
+}
+
+.buton1, .buton2 {
+	position: relative;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	padding: 0;
+	margin: 0;
+	top: 200px;
+}
+
+.buton1 {
+	background-image: url('butonp.png');
+	background-size: 100% 100%;
+	background-position: -2px;
+}
+.buton2 {
+	background-image: url('butonm.png');
+	background-size: 100% 100%;
+	background-position: -1px;
+}
