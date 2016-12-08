@@ -20,6 +20,7 @@ private:
 	float mWeight;
 	Vector3<float> mCenter;
 	Vector3<float> mVelocity;
+	float energy;
 public:
 	Object();
 	Object(std::string name);
@@ -39,6 +40,8 @@ public:
 	void setVelocity(float x, float y, float z);
 	Vector3<float> getVelocity() const;
 
+	float getEnergy() const;
+	void setEnergy(float);
 protected:
 
 };

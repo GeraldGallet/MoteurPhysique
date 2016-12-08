@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 #include <ctime>
+#include <cmath>
 
 #include "PhysicEngine/Object.hpp"
 #include "PhysicEngine/Vector3.hpp"
@@ -34,6 +35,7 @@ public:
 	std::string getObjectsAsJSON();
 	Vector3<float> GetForces( Object &);
 	Vector3<float> gravity( Object &);
+	bool verifictation_energy( Object &);
 
 
 protected:

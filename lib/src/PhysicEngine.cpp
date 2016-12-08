@@ -70,6 +70,11 @@ void PhysicEngine::simulate(float dt) {
 
 		mObjects[i]->setCenter(centerBase);
 		mObjects[i]->setCenter(mObjects[i]->getCenter() + k1/ (float) 6 + k2/ (float) 3 + k3/ (float) 3 + k4/ (float) 6);
+
+		if(verifictation_energy(*mObjects[i])){
+			std::cout << "changement détecté dans l'energie potentielle de :"<< std::endl;
+			std::cout << mObjects[i]  << std::endl;
+		}
 	}
 }
 
@@ -87,8 +92,27 @@ void PhysicEngine::removeObject(const Object& object) {
 	}
 }
 
-/* TODO */
-
+bool PhysicEngine::verifictation_energy( Object & object){
+	if(
+		object.getEnergy() ==
+		(
+			(1/2)*object.getWeight()*(
+				pow(
+					pow(
+						pow(object.getVelocity().x,2)+
+						pow(object.getVelocity().x,2)+
+						pow(object.getVelocity().x,2)
+					,1.0/3)
+				,2)
+			)
+			+
+			2	//potential energy (gravity) TODO
+		)
+	)
+		return 1;
+	else
+		return 0;
+}
 
 
 Vector3<float> PhysicEngine::GetForces(Object &object){
