@@ -10,8 +10,8 @@
 		<link rel="stylesheet" type="text/css" href="super.css"/>
   </head>
   <body>
-  	<button class='buton1' onclick="size=addObject(size)"></button>
-  	<button class='buton2' onclick="size=removeObject(size)""></button>
+  	<button class='buton1' onclick="addObject()"></button>
+  	<button class='buton2' onclick="removeObject()"></button>
   </body>
 </html>
 
@@ -19,7 +19,7 @@
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(100,window.innerWidth/window.innerHeight, 0.1, 1000);
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth-70, window.innerHeight-120); //taille fenetre
+renderer.setSize(window.innerWidth-20, window.innerHeight-70); //taille fenetre
 document.body.appendChild(renderer.domElement);
 var texture = THREE.ImageUtils.loadTexture('space.jpg');
 var backgroundMesh = new THREE.Mesh(
@@ -37,8 +37,8 @@ backgroundScene.add(backgroundMesh);
 var geometry = new THREE.SphereGeometry(1, 50, 50, 0, Math.PI * 2, 0, Math.PI * 2);
 var material = new THREE.MeshNormalMaterial();
 
-
 var size = 0;
+var t = 0;
 var myArray = [];
 var direction = [];
 
@@ -59,7 +59,7 @@ function checkKey(e){
 		camera.position.x += 0.2;
 	}
 }
-function addObject(size){
+function addObject(){
 	myArray[size] = new THREE.Mesh(geometry, material);
 	scene.add(myArray[size]);
 	myArray[size].position.x = Math.floor((Math.random()*40)-20);
@@ -67,26 +67,61 @@ function addObject(size){
 	myArray[size].position.z = Math.floor((Math.random()*30)-15);
 	direction[size] = (Math.random()-0.5)/5;
 	size++;
-	return size;
+	console.log(size);
+	return;
 }
-function removeObject(size){
-	if(size <=0) return size;
+function removeObject(){
+	if(size <=0) return;
 	myArray[size-1].visible = false;
 	size--;
-	return size;
-}
-var render = function () {
-	requestAnimationFrame(render);
 	console.log(size);
+	return;
+}
+
+function sun(){
+	var soleil = new THREE.Mesh(geometry, material);
+	scene.add(soleil);
+	soleil.position.x = 0;
+	soleil.position.y = 0;
+	soleil.position.z = 0;
+}
+	
+var planete = new THREE.Mesh(geometry, material);
+scene.add(planete);
+// VALEURS EN DUR QUI PASSENT CREME
+var y0 = 10;
+planete.position.x = 0;
+planete.position.y = y0;
+planete.position.z = 0;
+
+function newPosition(){ 
+	/*//////////////////////////////////////////////////////
+		A MODIFIER POUR DONNER LES VALEURS DES POSITIONS DE LA PLANETE QUI BOUGE
+	/////////////////////////////////////////////////////*/
+	var x = planete.position.x;
+	var y = planete.position.y;
+	var z = planete.position.z;
+	var valx = 0.01;
+	var valy = -0.01;
+
+	planete.position.x = Math.cos(x);
+	planete.position.y = Math.sin(y)+y0;
+	//planete.position.z = val*t*t + val*t + Math.cos(z);
+}
+
+var render = function () {
+	t++; // on incrémente le temps à chaque affichage
+	newPosition();
+	requestAnimationFrame(render);
 	for (var i = 0; i < size; i++) {
 		myArray[i].position.x += direction[i];
 	}
 	renderer.autoClear = false;
-    renderer.clear();
-    renderer.render(backgroundScene , backgroundCamera );
-    renderer.render(scene, camera);
-    document.onkeypress = checkKey;
+    	renderer.clear();
+    	renderer.render(backgroundScene , backgroundCamera );
+    	renderer.render(scene, camera);
+    	document.onkeypress = checkKey;
 };
-
+//sun();
 render();
 </script>
